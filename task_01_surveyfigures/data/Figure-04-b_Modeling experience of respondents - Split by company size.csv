@@ -1,6 +1,5 @@
-﻿ , ,I have no mathematical modeling training or experience,I have used modeling results in my function,I have some experience and training in developing mathematical models,I have developed mathematical models extensively
- , ,No experience,Little experience,Some experience,Significant experience
-All respondents,All respondents,7.518796992,6.015037594,18.79699248,67.66917293
-<100 employees,Small company,0,3.333333333,13.33333333,83.33333333
-"100 -10,000 employees",Medium company,12.19512195,4.87804878,21.95121951,60.97560976
-">10,000 employees",Large company,8.064516129,8.064516129,19.35483871,64.51612903
+﻿Subset,No experience,Little experience,Some experience,Significant experience
+All respondents,7.518796992,6.015037594,18.79699248,67.66917293
+Small company,0,3.333333333,13.33333333,83.33333333
+Medium company,12.19512195,4.87804878,21.95121951,60.97560976
+Large company,8.064516129,8.064516129,19.35483871,64.51612903
