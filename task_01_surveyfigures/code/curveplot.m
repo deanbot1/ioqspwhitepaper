@@ -1,12 +1,16 @@
-function curveplot(datadir,datafile)
+function curveplot(datadir,datafile,ignoreall)
 
-% makes curveplots of stats on survey
-
-%datafile = '../data/Figure-04-a_Modeling experience of respondents - Split by modeler type.csv'
+if nargin < 3
+    ignoreall = 0
+end
 
 TT = readtable(fullfile(datadir,datafile));
 
 AnswerVals = TT.Properties.VariableNames(2:end);
+
+if ignoreall
+    TT = TT(find(~strcmpi(TT.Subset,'All respondents')),:);
+end
 
 
 figure('Position',[379   435   893   420])
