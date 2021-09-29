@@ -1,7 +1,11 @@
-function curveplot(datadir,datafile,ignoreall)
+function curveplot(datadir,datafile,ignoreall,savefigs)
 
 if nargin < 3
     ignoreall = 0
+end
+
+if nargin < 4
+    savefigs = 0
 end
 
 TT = readtable(fullfile(datadir,datafile));
@@ -23,6 +27,7 @@ for j = 1:Nrow
     text(Ncol-1,TT{j,Ncol},[' ' TT.Subset{j}],'Color',get(hh(j),'Color'))
 end
 
+
 set(gca,'Xtick',(1:Ncol-1),'XtickLabel',AnswerVals)
 Ylimold = get(gca,'Ylim');
 Ylimnew = Ylimold + [-5 5];
@@ -33,3 +38,9 @@ ststart = strfind(datafile,'_')+1;
 ststop = strfind(datafile,'.csv')-1;
 
 title(datafile(ststart:ststop))
+
+if savefigs
+    print(['../out/' datafile(ststart:ststop) '.pdf'],'-dpdf');
+    print(['../out/' datafile(ststart:ststop) '.png'],'-dpng');
+    print(['../out/' datafile(ststart:ststop) '.emf'],'-dmeta');
+end
