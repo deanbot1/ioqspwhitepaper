@@ -25,12 +25,18 @@ figure('Position',[379   435   893   420])
 
 
 for j = 1:Nrow
-    hh = plot([1:Ncol-1],TT{j,2:Ncol}','LineWidth',2,'Color',cfun(TT.Subset{j})); hold on
+    hh = plot([1:Ncol-1],TT{j,2:Ncol}','LineWidth',3,'Color',cfun(TT.Subset{j})); hold on
     text(Ncol-1,TT{j,Ncol},[' ' TT.Subset{j}],'Color',get(hh,'Color'))
 end
 
+for k = 1:length(AnswerVals) % vincent wants spaces
+        AnswerVals{k} = strrep(AnswerVals{k},'Contribution',' Contribution');
+end
 
 set(gca,'Xtick',(1:Ncol-1),'XtickLabel',AnswerVals)
+if length(AnswerVals)==5
+    set(gca,'XtickLabel',{'1(Least)','2','3','4','5(Most)'})
+end
 Ylimold = get(gca,'Ylim');
 Ylimnew = Ylimold + [-5 5];
 set(gca,'Xlim',[0.5 Ncol],'Ylim',Ylimnew)
@@ -42,9 +48,10 @@ ststop = strfind(datafile,'.csv')-1;
 title(datafile(ststart:ststop))
 
 if savefigs
-    print(['../out/' datafile(ststart:ststop) '.pdf'],'-dpdf');
-    print(['../out/' datafile(ststart:ststop) '.png'],'-dpng');
-    print(['../out/' datafile(ststart:ststop) '.emf'],'-dmeta');
+%    print(['../out/' datafile(ststart:ststop) '.fig'],'-dpdf');
+%    print(['../out/' datafile(ststart:ststop) '.png'],'-dpng');
+%    print(['../out/' datafile(ststart:ststop) '.emf'],'-dmeta');
+    savefig(['../out/' datafile(ststart:ststop) '.fig'])
 end
 
 
